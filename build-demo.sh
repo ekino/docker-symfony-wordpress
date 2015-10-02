@@ -28,7 +28,7 @@ curl -LsS http://symfony.com/installer -o symfony
 symfony new wordpress/symfony
 rm symfony
 
-echo "\n--> Installing EkinoWordpressBundle...\n"
+echo "\n--> Installing Symfony EkinoWordpressBundle...\n"
 
 cd wordpress/symfony && curl -sS https://getcomposer.org/installer | php
 php composer.phar require ekino/wordpress-bundle
@@ -47,9 +47,16 @@ ekino_wordpress:
         firewall_name: secured_area # This is the firewall default name
         login_url: "/wp-login.php" # Absolute URL to the wordpress login page' >> wordpress/symfony/app/config/config.yml
 
+cp code/security.yml wordpress/symfony/app/config/security.yml
+
 cp code/index.php wordpress/index.php
 cp code/.htaccess wordpress/.htaccess
 
 cp code/parameters.yml wordpress/symfony/app/config/parameters.yml
+
+echo "\n--> Installing Wordpress ekino-wordpress-symfony plugin...\n"
+
+git clone git@github.com:ekino/ekino-wordpress-symfony.git wordpress/wp-content/plugins/ekino-wordpress-symfony
+cp code/wp-config.php wordpress/wp-config.php
 
 echo "\n--> Your demo is built!\n--> You can now type 'make build-containers' and run the instance with 'make run'.\n"
