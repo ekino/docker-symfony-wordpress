@@ -10,10 +10,7 @@ build-demo:
 	sh build-demo.sh
 
 build-containers:
-	docker build -t wordpress/code code
-	docker build -t wordpress/php-fpm php-fpm
-	docker build -t wordpress/nginx nginx
-	docker pull mysql
+	docker-compose build
 
 run:
 	docker-compose up

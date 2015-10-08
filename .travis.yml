@@ -10,5 +10,4 @@ before_install:
 
 script:
   - make build-demo
-  - make build-containers
   - make run

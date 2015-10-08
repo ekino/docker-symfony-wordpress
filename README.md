@@ -23,7 +23,6 @@ Next, run the demonstration instance by running:
 
 ```bash
 $ make build-demo
-$ make build-containers
 $ make run
 ```
 
@@ -33,25 +32,16 @@ You can visit your WordPress/Symfony application on the following URL: `http://w
 
 You also will have to specify the MySQL docker container host when filling the database installation: `dockersymfonywordpress_db_1` and `root/root` as login/password.
 
-# Manual installation
+# Options
 
-Optionally, you can also build Docker images separately and run the docker instance by typing:
+You can also re-build Docker images and run the docker instance by typing:
 
 ```bash
-$ docker build -t wordpress/code code
-$ docker build -t wordpress/php-fpm php-fpm
-$ docker build -t wordpress/nginx nginx
-$ docker pull mysql
+$ make build-containers
 ```
 
-Last thing you need is to set the Symfony and Wordpress installations. This can be done by using our script:
+You can reset your demonstration instance at any time. This can be done by using our script:
 
 ```bash
-$ ./build-demo.sh
-```
-
-Now, you can run the demonstration instance:
-
-```bash
-$ docker-compose up
+$ make build-demo
 ```

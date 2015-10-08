@@ -1,5 +1,5 @@
 application:
-    image: wordpress/code
+    build: ./code
     volumes:
         - ./wordpress:/var/www/wordpress
     tty: true
@@ -13,7 +13,7 @@ db:
         MYSQL_USER: root
         MYSQL_PASSWORD: root
 php:
-    image: wordpress/php-fpm
+    build: ./php-fpm
     expose:
         - 9000:9000
     volumes_from:
@@ -21,7 +21,7 @@ php:
     links:
         - db
 nginx:
-    image: wordpress/nginx
+    build: ./nginx
     ports:
         - 80:80
     links:
